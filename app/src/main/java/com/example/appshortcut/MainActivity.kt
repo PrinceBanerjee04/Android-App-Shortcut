@@ -102,8 +102,8 @@ class MainActivity : ComponentActivity() {
     private fun addDynamicShortcut()
     {
         val shortcut = ShortcutInfoCompat.Builder(applicationContext,"dynamic")
-            .setShortLabel("Call Mum")
-            .setLongLabel("Clicking this will call your mum")
+            .setShortLabel("Call Mom")
+            .setLongLabel("Clicking this will call your Mom")
             .setIcon(IconCompat.createWithResource(
                 applicationContext,R.drawable.baseline_baby_changing_station_24
             ))
