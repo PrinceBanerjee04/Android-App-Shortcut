@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        handleIntent(intent)
         setContent {
             AppShortcutTheme {
                 Column(
@@ -52,6 +53,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        handleIntent(intent)
+    }
+
     private fun addDynamicShortcut()
     {
         val shortcut = ShortcutInfoCompat.Builder(applicationContext,"dynamic")
@@ -68,6 +74,16 @@ class MainActivity : ComponentActivity() {
             )
             .build()
         ShortcutManagerCompat.pushDynamicShortcut(applicationContext,shortcut)
+    }
+
+    private fun handleIntent(intent:Intent?){
+        intent?.let{
+            when(intent.getStringExtra("shortcut_id")){
+                "static"->viewModel.onShortcutClicked(ShortcutType.STATIC)
+                "dynamic"->viewModel.onShortcutClicked(ShortcutType.DYNAMIC)
+                "pinned"->viewModel.onShortcutClicked(ShortcutType.PINNED)
+            }
+        }
     }
 }
 
