@@ -52,7 +52,10 @@ class MainActivity : ComponentActivity() {
 
                     }
                     Button(onClick = ::addDynamicShortcut) {
-                        Text("Add dynamic shortcut")
+                        Text("Add Dynamic Shortcut")
+                    }
+                    Button(onClick = ::addDynamicShortcut) {
+                        Text("Add Pinned Shortcut")
                     }
                 }
             }
@@ -92,8 +95,7 @@ class MainActivity : ComponentActivity() {
                 callbackIntent,
                 PendingIntent.FLAG_IMMUTABLE
             )
-
-
+            shortcutManager.requestPinShortcut(shortcut,successPendingIntent.intentSender)
         }
     }
 
