@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
                     Button(onClick = ::addDynamicShortcut) {
                         Text("Add Dynamic Shortcut")
                     }
-                    Button(onClick = ::addDynamicShortcut) {
+                    Button(onClick = ::addPinnedShortcut) {
                         Text("Add Pinned Shortcut")
                     }
                 }
